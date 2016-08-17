@@ -4,6 +4,8 @@ A processing sketch that turned out much more chaotic than intended. Kept it bec
 
 Runs with processing 3.0
 
-Copyright 2008 Walter Gordy
+Copyright 2008, 2016 Walter Gordy
 
-![alt tag](https://github.com/s4lt3d/android_monster/blob/master/preview.png?raw=true)
+[Watch it on youtube](https://www.youtube.com/watch?v=ejlrw_3oFjw)
+
+![processing sketch preview](https://github.com/s4lt3d/android_monster/blob/master/preview.png?raw=true)
