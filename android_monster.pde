@@ -8,7 +8,7 @@
 int neg = 0;
 int pos = 1;
 int neutral = 2;
-int count = 750000;
+int count = 750000; // running this many particles real-time requires beefy computer
 int sx = 1280;
 int sy = 720;
 color currentcolor;
