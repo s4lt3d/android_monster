@@ -1,8 +1,14 @@
+// Walter Gordy 2008, 2016
+
+// Updates code to run for processing 3
+// New mode FX2D runs much much faster
+// Increased particle count from 25,000 to 750,000!
+// Decreases alpha color on particles
 
 int neg = 0;
 int pos = 1;
 int neutral = 2;
-int count = 7500000;
+int count = 750000;
 int sx = 1280;
 int sy = 720;
 color currentcolor;
@@ -28,7 +34,6 @@ class Particle
     float dis;
     float fx;
     float fy;
-   // float fz;
     float f;
     
     dis = (p.px - px)*(p.px - px) + (p.py - py)*(p.py - py);
@@ -41,29 +46,10 @@ class Particle
     }
     
     fx = f * (p.px - px);
-    
     fy = f * (p.py - py);
     
-    
-    
-    vx += fx;// + random(-.01, 0.01);
-    vy += fy;// + random(-.01, 0.01);
-//    int co = 128 - (int)(vx * vx + vy * vy / 128);
-    
-//    if(vx * vx + vy * vy > 70)
- //   {
-//     int r = (int)random(0, 3);
-//      if(r == 0)
-  //      c = color(0,0,0);
- //     else if(r == 1)
- //       c = color(250,0,0);
- //     else if(r == 1)
-  //      c = color(0,0,0);
-   //   else 
-    //    c = color(0,0,0);    
-  //  }
-  //  else
-//      c = color(0,0,co);
+    vx += fx;
+    vy += fy;
   }
   
   public void update()
@@ -100,18 +86,9 @@ class Particle
       vy = 0;
       vx += random(-1,1);
     }
-    
-    
-    
+
     vx *= .5f;
     vy *= .5f;    
-      
- //   npx = 0;
- //   npy = 0;
- //   npz = 0;
- //   nvx = 0;
- //   nvy = 0;
- //   nvz = 0;
   }
 }
 
@@ -134,15 +111,11 @@ void setup()
   }
 }
 
-
-
 void draw()
 {
-
   background(255, 255, 255);
-  stroke(0,0,0,5);
+  stroke(0,0,0,50);
 
-  
   p[count-1].px += random(-99,99);
   p[count-1].py += random(-99,99);
   
@@ -156,15 +129,11 @@ void draw()
     p[count-1].py = 200;
   if(p[count-1].py > (sy - 200))
     p[count-1].py = sy - 200;
-    
-    
+      
   p[count-1].vx = 0;
   p[count-1].vy = 0;
   p[count-1].type = 2;
   p[count-1].force = 2000;
-//  for (int i = 0; i < count-1; i++)
-//  {     
-//  }
     
    beginShape(POINTS);
    for (int i = 0; i < count; i++)
@@ -172,27 +141,9 @@ void draw()
        p[i].interact(p[count-1]);
        p[i].update();  
    
-   //  if(((int)p[i].px + (int)p[i].py * sy) < (sy * sx) && ((int)p[i].px + (int)p[i].py * sx) > 0) 
      vertex(p[i].px, p[i].py);                  
    }
  
     endShape();
-
-   //  beginShape(POINTS);
-   //for (int i = 100000; i < count; i++)
-   //{
-   //
-   //  p[i].update();
-   //  if(((int)p[i].px + (int)p[i].py * sy) < (sy * sx) && ((int)p[i].px + (int)p[i].py * sx) > 0) 
-   //    vertex(p[i].px, p[i].py);                  
-   //}
-//   endShape();
-  saveFrame(); 
-}
-int moveCounter=0;
-void mouseMoved()
-{
- // moveCounter++;
- // if(moveCounter > 10)
-  // exit(); 
+ // saveFrame(); 
 }
